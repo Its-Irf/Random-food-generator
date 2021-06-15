@@ -8,7 +8,7 @@ public class foodList {
     public foodList(){
         fArrayList=new ArrayList<Food>();
     }
-    public void getFoodList(String foodlistFileName){
+    public void loadFoodList(String foodlistFileName){
         try {
             File foodlist = new File(foodlistFileName+".txt");
             Scanner myReader = new Scanner(foodlist);
@@ -40,5 +40,20 @@ public class foodList {
             System.out.println("An error has occured.\nMAke sure that the file name stated is as indicated without addding the .txtx extension to the name.It must be word ofr word and exaclty as shown.");
         }
 
+    }
+
+    public void addFoodtoList(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("How many food items would you like to add?(Type in the number in the designated area shown:");
+        int x = sc.nextInt();
+        
+        for(int i=0;i<x;i++){
+            System.out.println("Enter food Item Name:");
+            String name=sc.next();
+            System.out.println("Next,enter food Item Type:");
+            String type= sc.next();
+            fArrayList.add(new Food(type, name));
+        }
+        sc.close();
     }
 }
